@@ -3,7 +3,6 @@
 ## 🚀 Project Description
 
 Mahdia Blue & Green is a full-stack web platform that promotes the **blue** (sea), **green** and **circular** economy in the Mahdia region of Tunisia. It is an initiative of the Mahdia regional council of the Tunisian Order of Engineers (OIT). It publishes articles, events and resources, showcases local entrepreneurs, and gives content teams an admin panel to manage everything.
-
 The application is built as a **single-page React frontend** and a **REST API** built with Express and MongoDB. It also includes an **AI assistant** (chatbot) powered by OpenRouter.
 
 
