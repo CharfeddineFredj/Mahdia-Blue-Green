@@ -43,65 +43,10 @@ A full-stack web platform promoting the **blue** (sea) and **green** (sustainabl
 | Security | Helmet, express-rate-limit, express-validator, express-mongo-sanitize, xss-clean, sanitize-html, speakeasy (TOTP) |
 | Tooling | ESLint, Node test runner, nodemon |
 
-## Architecture
 
-```
-.
-├── Frontend/          # React + Vite single-page application
-│   ├── src/pages/     # Public pages and admin panel
-│   ├── src/components/
-│   └── src/services/  # API client
-├── Backend/           # Express REST API
-│   ├── routes/        # Endpoints (auth, articles, events, admin, chat, ...)
-│   ├── controllers/   # Business logic
-│   ├── models/        # Mongoose schemas
-│   ├── middleware/    # Auth, validation, security
-│   ├── utils/         # Email, seeding, helpers
-│   └── tests/         # Unit and integration tests
-└── documentation/     # Project documentation and diagrams
-```
 
-![Class diagram](documentation/giagramme%20e%20class.jpg)
 
-## Getting Started
 
-### Prerequisites
-
-- Node.js 20.19+ or 22.12+ (required by Vite 7)
-- A MongoDB database, local or on MongoDB Atlas
-- Optional, for the full feature set: Google OAuth credentials, a Cloudinary account, an SMTP account, an OpenRouter API key
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/CharfeddineFredj/Mahdia-Blue-Green-Portfolio.git
-cd Mahdia-Blue-Green-Portfolio
-```
-
-### 2. Start the backend
-
-```bash
-cd Backend
-npm install
-cp .env.example .env        # Windows PowerShell: Copy-Item .env.example .env
-# Fill in the values in .env (see "Environment variables" below)
-npm run dev                 # API on http://localhost:5000
-```
-
-On first start the API creates the superadmin account (if `SUPERADMIN_*` variables are set) and loads the initial content from `Backend/data`.
-
-### 3. Start the frontend
-
-In a second terminal:
-
-```bash
-cd Frontend
-npm install
-cp .env.example .env        # Windows PowerShell: Copy-Item .env.example .env
-npm run dev                 # App on http://localhost:5173
-```
-
-Open **http://localhost:5173** in your browser.
 
 
 
