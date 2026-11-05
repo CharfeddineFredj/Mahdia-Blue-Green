@@ -215,12 +215,6 @@ http://localhost:5000/api
 ### 🛠️ Admin Interface - Dashboard
 ![Admin dashboard](docs/screenshots/admin-dashboard.png)
 
-### 🛠️ Admin Interface - Articles
-![Admin articles](docs/screenshots/admin-articles.png)
-
-### 🛠️ Admin Interface - Events
-![Admin events](docs/screenshots/admin-events.png)
-
 ### 🛠️ Admin Interface - Resources
 ![Admin resources](docs/screenshots/admin-resources.png)
 
