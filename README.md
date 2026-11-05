@@ -1,181 +1,231 @@
-# Mahdia Blue & Green
+# 🌟 Mahdia Blue & Green
 
-A full-stack web platform promoting the **blue** (sea) and **green** (sustainable) economy in Mahdia, Tunisia. It publishes articles, events and resources, showcases local entrepreneurs, and gives content teams an admin panel to manage everything.
+## 🚀 Project Description
 
-![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
-![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-API-339933?logo=nodedotjs&logoColor=white)
-![Express](https://img.shields.io/badge/Express-API-000000?logo=express&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?logo=mongodb&logoColor=white)
+Mahdia Blue & Green is a full-stack web platform that promotes the **blue** (sea), **green** and **circular** economy in the Mahdia region of Tunisia. The platform is presented as an initiative of the ILO (OIT) in Mahdia. It publishes articles, events and resources, showcases local entrepreneurs, and gives content teams an admin panel to manage everything.
+
+The application is built as a **single-page React frontend** and a **REST API** built with Express and MongoDB. It also includes an **AI assistant** (chatbot) powered by OpenRouter.
+
+Developed by [Charfeddine Fredj](https://github.com/CharfeddineFredj).
 
 ---
 
-## Features
+## 🎯 Main Features
 
-**Public website**
-- Blog with rich-text articles (TipTap editor) and category filters
-- Events listing and event pages, with a questionnaire flow
-- Resources library and a directory of local entrepreneurs
-- Economy pages by sector, an "About" page, contact form and legal pages
-- Newsletter subscription
-- AI assistant (chatbot) powered by OpenRouter, which can be switched on or off
+### 🌍 Visitor
+- 📰 Read articles, guides and testimonials on the blog, with filters by category and type
+- 📅 Browse the events calendar and open event pages
+- 📚 Access resources: documents, spreadsheets and images
+- 🧑‍🤝‍🧑 Discover local entrepreneurs and the economy sectors
+- ✉️ Contact the team and subscribe to the newsletter
+- 🤖 Chat with the AI assistant
 
-**Accounts & security**
-- Email/password sign-up with email verification and password reset
-- Google sign-in (OAuth 2.0)
-- Two-factor authentication (TOTP) with QR-code setup for authenticator apps
-- JWT-based sessions, bcrypt password hashing, rate limiting
-- Hardening middleware: Helmet, input validation and sanitization, NoSQL-injection protection
+### 👤 Registered User
+- 📝 Complete the registration questionnaire to build a profile
+- ✍️ Submit articles and events, which are published after moderation
+- 🔐 Manage the profile and enable two-factor authentication (QR code)
+- 🔑 Sign in with email and password, or with Google
 
-**Administration**
-- Admin panel with roles: `superadmin`, `analyst`, `moderator`, `user`
-- Content management for articles, events and resources, with a moderation workflow
-- Registration questionnaires that complete user profiles
-- Image uploads stored on Cloudinary
-- Dashboards and analytics charts (Recharts)
+### 🛡️ Moderator
+- ✅ Approve or reject submitted articles and events, including event changes
+- 🗑️ Delete any post
+- 🧾 Manage entrepreneurs, partners, team members and newsletter subscribers
+- 📬 Handle contact messages
 
-## Tech Stack
+### 📊 Analyst
+- 📈 Consult the analytics dashboards and export them (CSV, PNG)
+- 🧠 Create and manage registration questionnaires and read the responses
+- 💬 Read and reply to contact messages
 
-| Layer | Technologies |
-|---|---|
-| Frontend | React 19, Vite 7, React Router, TipTap, Recharts, Lucide icons, DOMPurify |
-| Backend | Node.js, Express, MongoDB with Mongoose, Passport (Google OAuth), JWT, Nodemailer, Multer, Cloudinary |
-| Security | Helmet, express-rate-limit, express-validator, express-mongo-sanitize, xss-clean, sanitize-html, speakeasy (TOTP) |
-| Tooling | ESLint, Node test runner, nodemon |
+### 🧑‍💻 Superadmin
+- 🔧 Full control of the system: users, roles, admin team, content and settings
+- 👥 Manage admin accounts and reactivate user accounts
 
-## Architecture
+---
 
-```
-.
-├── Frontend/          # React + Vite single-page application
-│   ├── src/pages/     # Public pages and admin panel
-│   ├── src/components/
-│   └── src/services/  # API client
-├── Backend/           # Express REST API
-│   ├── routes/        # Endpoints (auth, articles, events, admin, chat, ...)
-│   ├── controllers/   # Business logic
-│   ├── models/        # Mongoose schemas
-│   ├── middleware/    # Auth, validation, security
-│   ├── utils/         # Email, seeding, helpers
-│   └── tests/         # Unit and integration tests
-└── documentation/     # Project documentation and diagrams
-```
+## 🔧 Technologies Used
 
-![Class diagram](documentation/giagramme%20e%20class.jpg)
+### Frontend
+- ⚛️ React 19 with Vite 7
+- 🧭 React Router
+- ✏️ TipTap rich-text editor
+- 📊 Recharts for dashboards and analytics
+- 🎨 Lucide icons
 
-## Getting Started
+### Backend
+- ⚙️ Node.js with Express
+- 🍃 MongoDB with Mongoose
+- 🔐 JWT, Passport (Google OAuth) and TOTP two-factor authentication
+- ☁️ Cloudinary for image uploads
+- 📧 Nodemailer for verification and password-reset emails
 
-### Prerequisites
+### Security
+- 🛡️ Helmet, rate limiting, input validation and sanitization, NoSQL-injection protection
 
-- Node.js 20.19+ or 22.12+ (required by Vite 7)
-- A MongoDB database, local or on MongoDB Atlas
-- Optional, for the full feature set: Google OAuth credentials, a Cloudinary account, an SMTP account, an OpenRouter API key
+### AI
+- 🤖 OpenRouter for the chat assistant
 
-### 1. Clone the repository
+### Architecture
+- 🔗 Single-page application with a REST API
+
+---
+
+## 🎯 Objective
+
+The project aims to promote the sustainable economy in Mahdia by informing citizens, supporting local entrepreneurs, and publishing events and resources. It also gives content teams a secure admin panel to manage the platform, with a moderation workflow and analytics.
+
+---
+
+## 🛠️ Installation and Setup
+
+### 1️⃣ Install Dependencies
+
+Prerequisites: Node.js 20.19+ or 22.12+ (required by Vite 7), and a MongoDB database (local or MongoDB Atlas).
 
 ```bash
 git clone https://github.com/CharfeddineFredj/Mahdia-Blue-Green-Portfolio.git
 cd Mahdia-Blue-Green-Portfolio
 ```
 
-### 2. Start the backend
-
+#### Backend
+Navigate to the backend folder and install dependencies:
 ```bash
 cd Backend
 npm install
-cp .env.example .env        # Windows PowerShell: Copy-Item .env.example .env
-# Fill in the values in .env (see "Environment variables" below)
-npm run dev                 # API on http://localhost:5000
 ```
 
-On first start the API creates the superadmin account (if `SUPERADMIN_*` variables are set) and loads the initial content from `Backend/data`.
-
-### 3. Start the frontend
-
-In a second terminal:
-
+#### Frontend
+Navigate to the frontend folder and install dependencies:
 ```bash
 cd Frontend
 npm install
-cp .env.example .env        # Windows PowerShell: Copy-Item .env.example .env
-npm run dev                 # App on http://localhost:5173
 ```
 
-Open **http://localhost:5173** in your browser.
+---
 
-## Environment Variables
+### 2️⃣ Configure Environments
 
-Backend (`Backend/.env`):
+#### Backend
+Copy the `.env.example` file and rename it to `.env`, then fill in the values:
+```bash
+cp .env.example .env
+```
+Configure at least the database, authentication and first superadmin account:
+```
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=a_long_random_string
+SUPERADMIN_EMAIL=your_admin_email
+SUPERADMIN_USERNAME=superadmin
+SUPERADMIN_PASSWORD=a_strong_password
+```
+The SMTP, Cloudinary, Google OAuth and OpenRouter variables enable the corresponding features. See `.env.example` for the full list.
 
-| Variable | Purpose |
-|---|---|
-| `PORT` | API port (default `5000`) |
-| `FRONTEND_URL` | Public URL of the frontend (used in emails and redirects) |
-| `CORS_ORIGINS` | Allowed frontend origins, comma-separated |
-| `TRUST_PROXY` | Set to `true` when running behind a reverse proxy |
-| `MONGODB_URI` | MongoDB connection string |
-| `JWT_SECRET` | Secret used to sign authentication tokens |
-| `SUPERADMIN_EMAIL` / `SUPERADMIN_USERNAME` / `SUPERADMIN_PASSWORD` | Credentials of the first superadmin account. No default values are provided |
-| `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_USER`, `EMAIL_PASS`, `EMAIL_FROM` | SMTP settings for verification and password-reset emails |
-| `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET` | Image upload storage |
-| `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_CALLBACK_URL` | Google sign-in |
-| `OPENROUTER_API_KEY`, `OPENROUTER_MODEL` | AI assistant |
+#### Frontend
+Copy the `.env.example` file to `.env` in the frontend folder:
+```
+VITE_API_URL=http://localhost:5000/api
+VITE_ENABLE_CHATBOT=true
+```
 
-Frontend (`Frontend/.env`):
+Never commit your real `.env` files.
 
-| Variable | Purpose |
-|---|---|
-| `VITE_API_URL` | Base URL of the API, e.g. `http://localhost:5000/api` |
-| `VITE_ENABLE_CHATBOT` | Show or hide the AI assistant |
+---
 
-Never commit real values. Keep `.env` files out of version control; `.env.example` contains placeholders only.
+### 3️⃣ Prepare the Database
 
-## Available Scripts
+No migration is needed. On first start, the API:
+- creates the superadmin account from the `SUPERADMIN_*` variables
+- loads the initial content from `Backend/data`, only the first time
 
-| Location | Command | Description |
-|---|---|---|
-| `Backend` | `npm run dev` | Start the API with auto-reload |
-| `Backend` | `npm start` | Start the API in production mode |
-| `Backend` | `npm test` | Run the unit tests |
-| `Backend` | `npm run test:integration` | Run the integration workflows |
-| `Frontend` | `npm run dev` | Start the Vite development server |
-| `Frontend` | `npm run build` | Build the production bundle into `dist/` |
-| `Frontend` | `npm run lint` | Lint the source code |
+---
 
-## Screenshots
+### 4️⃣ Start the Project
 
-### Public website
+#### Backend
+Run the API in development mode:
+```bash
+cd Backend
+npm run dev
+```
 
-| Home | About |
-|:---:|:---:|
-| <img src="docs/screenshots/home.png" width="480" alt="Home page"> | <img src="docs/screenshots/about.png" width="480" alt="About page"> |
+#### Frontend
+Run the Vite development server:
+```bash
+cd Frontend
+npm run dev
+```
 
-| Blog | Events |
-|:---:|:---:|
-| <img src="docs/screenshots/blog.png" width="480" alt="Blog"> | <img src="docs/screenshots/events.png" width="480" alt="Events calendar"> |
+#### Tests (optional)
+```bash
+cd Backend
+npm test
+```
 
-| Event detail | Resources |
-|:---:|:---:|
-| <img src="docs/screenshots/event-detail.png" width="480" alt="Event detail page"> | <img src="docs/screenshots/resources.png" width="480" alt="Resources library"> |
+---
 
-| Entrepreneurs |
-|:---:|
-| <img src="docs/screenshots/entrepreneurs.png" width="480" alt="Entrepreneurs page"> |
+## 5️⃣ Access the Application
 
-### Admin panel
+### Frontend
+Open your browser and go to:
+```
+http://localhost:5173
+```
 
-| Dashboard | Articles |
-|:---:|:---:|
-| <img src="docs/screenshots/admin-dashboard.png" width="480" alt="Admin dashboard"> | <img src="docs/screenshots/admin-articles.png" width="480" alt="Articles management"> |
+### Backend
+The backend API is available at:
+```
+http://localhost:5000/api
+```
 
-| Events | Resources |
-|:---:|:---:|
-| <img src="docs/screenshots/admin-events.png" width="480" alt="Events management"> | <img src="docs/screenshots/admin-resources.png" width="480" alt="Resources management"> |
+---
 
-| Analytics |
-|:---:|
-| <img src="docs/screenshots/admin-analytics.png" width="480" alt="Analytics dashboard"> |
+## 🚀 Features to Test
 
-## Author
+- 📰 Blog: browse, filter and read articles
+- 📅 Events: open the calendar, view an event and register
+- 🔐 Account: sign up, verify your email, sign in and enable two-factor authentication
+- ✍️ Submit an article or event, then approve it as a moderator
+- 📈 Dashboard and analytics as superadmin or analyst
+- 🤖 Chat with the AI assistant
 
-**Charfeddine Fredj**: [github.com/CharfeddineFredj](https://github.com/CharfeddineFredj)
+---
+
+## 🖼️ Screenshots
+
+### 🖥️ Web Interface - Home
+![Home](docs/screenshots/home.png)
+
+### 🖥️ Web Interface - About
+![About](docs/screenshots/about.png)
+
+### 🖥️ Web Interface - Blog
+![Blog](docs/screenshots/blog.png)
+
+### 🖥️ Web Interface - Events
+![Events](docs/screenshots/events.png)
+
+### 🖥️ Web Interface - Event Detail
+![Event detail](docs/screenshots/event-detail.png)
+
+### 🖥️ Web Interface - Resources
+![Resources](docs/screenshots/resources.png)
+
+### 🖥️ Web Interface - Entrepreneurs
+![Entrepreneurs](docs/screenshots/entrepreneurs.png)
+
+### 🛠️ Admin Interface - Dashboard
+![Admin dashboard](docs/screenshots/admin-dashboard.png)
+
+### 🛠️ Admin Interface - Articles
+![Admin articles](docs/screenshots/admin-articles.png)
+
+### 🛠️ Admin Interface - Events
+![Admin events](docs/screenshots/admin-events.png)
+
+### 🛠️ Admin Interface - Resources
+![Admin resources](docs/screenshots/admin-resources.png)
+
+### 🛠️ Admin Interface - Analytics
+![Admin analytics](docs/screenshots/admin-analytics.png)
+
+---
