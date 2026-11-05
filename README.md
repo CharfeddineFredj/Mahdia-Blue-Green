@@ -103,44 +103,7 @@ npm run dev                 # App on http://localhost:5173
 
 Open **http://localhost:5173** in your browser.
 
-## Environment Variables
 
-Backend (`Backend/.env`):
-
-| Variable | Purpose |
-|---|---|
-| `PORT` | API port (default `5000`) |
-| `FRONTEND_URL` | Public URL of the frontend (used in emails and redirects) |
-| `CORS_ORIGINS` | Allowed frontend origins, comma-separated |
-| `TRUST_PROXY` | Set to `true` when running behind a reverse proxy |
-| `MONGODB_URI` | MongoDB connection string |
-| `JWT_SECRET` | Secret used to sign authentication tokens |
-| `SUPERADMIN_EMAIL` / `SUPERADMIN_USERNAME` / `SUPERADMIN_PASSWORD` | Credentials of the first superadmin account. No default values are provided |
-| `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_USER`, `EMAIL_PASS`, `EMAIL_FROM` | SMTP settings for verification and password-reset emails |
-| `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET` | Image upload storage |
-| `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_CALLBACK_URL` | Google sign-in |
-| `OPENROUTER_API_KEY`, `OPENROUTER_MODEL` | AI assistant |
-
-Frontend (`Frontend/.env`):
-
-| Variable | Purpose |
-|---|---|
-| `VITE_API_URL` | Base URL of the API, e.g. `http://localhost:5000/api` |
-| `VITE_ENABLE_CHATBOT` | Show or hide the AI assistant |
-
-Never commit real values. Keep `.env` files out of version control; `.env.example` contains placeholders only.
-
-## Available Scripts
-
-| Location | Command | Description |
-|---|---|---|
-| `Backend` | `npm run dev` | Start the API with auto-reload |
-| `Backend` | `npm start` | Start the API in production mode |
-| `Backend` | `npm test` | Run the unit tests |
-| `Backend` | `npm run test:integration` | Run the integration workflows |
-| `Frontend` | `npm run dev` | Start the Vite development server |
-| `Frontend` | `npm run build` | Build the production bundle into `dist/` |
-| `Frontend` | `npm run lint` | Lint the source code |
 
 ## Screenshots
 
