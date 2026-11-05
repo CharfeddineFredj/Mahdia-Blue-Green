@@ -214,7 +214,7 @@ http://localhost:5000/api
 ![Entrepreneurs](docs/screenshots/entrepreneurs.png)
 
 ### 🛠️ Admin Interface - Dashboard
-![Admin dashboard](docs/screenshots/admin-dashboard.png)
+![Admin dashboard](docs/screenshots/admin-dashboard-live.png)
 
 ### 🛠️ Admin Interface - Articles
 ![Admin articles](docs/screenshots/admin-articles.png)
