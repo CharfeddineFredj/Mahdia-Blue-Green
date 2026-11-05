@@ -144,16 +144,37 @@ Never commit real values. Keep `.env` files out of version control; `.env.exampl
 
 ## Screenshots
 
-<!-- To add screenshots: save them in docs/screenshots/ and replace each cell with ![Name](docs/screenshots/file.png) -->
+### Public website
 
-| Page | Preview |
-|---|---|
-| Home | _Screenshot coming soon_ |
-| Blog | _Screenshot coming soon_ |
-| Events | _Screenshot coming soon_ |
-| Admin panel | _Screenshot coming soon_ |
-| Account & two-factor authentication | _Screenshot coming soon_ |
-| AI assistant | _Screenshot coming soon_ |
+| Home | About |
+|:---:|:---:|
+| <img src="docs/screenshots/home.png" width="480" alt="Home page"> | <img src="docs/screenshots/about.png" width="480" alt="About page"> |
+
+| Blog | Events |
+|:---:|:---:|
+| <img src="docs/screenshots/blog.png" width="480" alt="Blog"> | <img src="docs/screenshots/events.png" width="480" alt="Events calendar"> |
+
+| Event detail | Resources |
+|:---:|:---:|
+| <img src="docs/screenshots/event-detail.png" width="480" alt="Event detail page"> | <img src="docs/screenshots/resources.png" width="480" alt="Resources library"> |
+
+| Entrepreneurs |
+|:---:|
+| <img src="docs/screenshots/entrepreneurs.png" width="480" alt="Entrepreneurs page"> |
+
+### Admin panel
+
+| Dashboard | Articles |
+|:---:|:---:|
+| <img src="docs/screenshots/admin-dashboard.png" width="480" alt="Admin dashboard"> | <img src="docs/screenshots/admin-articles.png" width="480" alt="Articles management"> |
+
+| Events | Resources |
+|:---:|:---:|
+| <img src="docs/screenshots/admin-events.png" width="480" alt="Events management"> | <img src="docs/screenshots/admin-resources.png" width="480" alt="Resources management"> |
+
+| Analytics |
+|:---:|
+| <img src="docs/screenshots/admin-analytics.png" width="480" alt="Analytics dashboard"> |
 
 ## Author
 
