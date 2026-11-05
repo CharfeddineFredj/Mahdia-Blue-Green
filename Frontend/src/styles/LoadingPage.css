@@ -1,0 +1,109 @@
+/* Loading Page Styles */
+.loading-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease-out;
+}
+
+.loading-page.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-circle {
+  position: relative;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-circle::before {
+  display: none;
+}
+
+.loading-circle::after {
+  display: none;
+}
+
+.loading-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  animation: rotate 2s linear infinite;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+  z-index: 1;
+}
+
+/* Animations */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 30px rgba(0, 102, 204, 0.5),
+                inset 0 0 30px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px rgba(0, 102, 204, 0.8),
+                inset 0 0 40px rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .loading-logo {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loading-logo {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .loading-logo {
+    width: 50px;
+    height: 50px;
+  }
+}

@@ -1,0 +1,590 @@
+================================================================================
+                    MAHDIA BLUE & GREEN - PROJECT DOCUMENTATION
+================================================================================
+                         Web Scraping & Analysis Report
+                         Generated: December 9, 2025
+================================================================================
+
+TABLE OF CONTENTS
+-----------------
+1. Project Overview
+2. Technology Stack
+3. Project Structure
+4. Backend Architecture
+5. Frontend Architecture
+6. Database Models
+7. API Endpoints
+8. Authentication & Security
+9. Features Summary
+10. Dependencies
+11. Scripts & Commands
+12. Admin & User Roles
+13. Configuration
+
+================================================================================
+1. PROJECT OVERVIEW
+================================================================================
+
+Name: Mahdia Blue & Green
+Purpose: A full-stack web application for promoting sustainable blue, green, 
+         and circular economy in Mahdia, Tunisia.
+
+Repository: https://github.com/zied1fatnassi/mahdia_bg
+
+This platform serves as an informational and community hub for sustainable 
+economic initiatives in the Mahdia region, featuring:
+- Articles and blog posts about sustainability
+- Event management and registration
+- Questionnaires for community engagement
+- User authentication with OAuth and 2FA
+- Admin dashboard for content moderation
+
+================================================================================
+2. TECHNOLOGY STACK
+================================================================================
+
+FRONTEND:
+---------
+- Framework: React 19.2.0
+- Build Tool: Vite 7.2.6
+- Router: React Router DOM 7.10.1
+- Animation: @lottiefiles/dotlottie-react 0.17.9
+- Icons: Lucide React 0.556.0
+- Language: JavaScript (ES Modules)
+- Styling: Custom CSS
+
+BACKEND:
+--------
+- Runtime: Node.js 20+
+- Framework: Express.js 5.1.0
+- Database: MongoDB with Mongoose 9.0.0
+- Authentication: 
+  - JWT (jsonwebtoken 9.0.2)
+  - Passport.js 0.7.0
+  - Google OAuth 2.0 (passport-google-oauth20)
+  - Microsoft OAuth (passport-microsoft)
+  - 2FA with speakeasy and qrcode
+
+SECURITY:
+---------
+- Helmet.js 8.1.0 (HTTP headers security)
+- Express Rate Limit 8.2.1
+- bcryptjs 3.0.3 (password hashing)
+- CORS 2.8.5
+- XSS-Clean 0.1.4
+- Express Mongo Sanitize 2.2.0
+
+OTHER SERVICES:
+---------------
+- Cloudinary 2.8.0 (image/media management)
+- Nodemailer 7.0.10 (email sending)
+- Multer 2.0.2 (file uploads)
+
+================================================================================
+3. PROJECT STRUCTURE
+================================================================================
+
+mahdia_bg-main/
+├── mahdia_bg-main/
+│   ├── .git/                    # Git repository
+│   ├── .gitignore              # Git ignore rules
+│   ├── README.md               # Main project readme
+│   ├── OAUTH_2FA_IMPLEMENTATION.md  # OAuth & 2FA documentation
+│   ├── SUPERADMIN_CREDENTIALS.md    # Admin login documentation
+│   ├── package.json            # Root package config
+│   │
+│   ├── Backend_blog-main/      # Backend API Server
+│   │   ├── config/             # Configuration files (3 files)
+│   │   ├── controllers/        # Request handlers (10 files)
+│   │   ├── data/               # Static data files (5 files)
+│   │   ├── docs/               # API documentation (3 files)
+│   │   ├── middleware/         # Express middleware (3 files)
+│   │   ├── models/             # Mongoose schemas (11 files)
+│   │   ├── routes/             # API route definitions (10 files)
+│   │   ├── scripts/            # Utility scripts (4 files)
+│   │   ├── utils/              # Helper utilities (3 files)
+│   │   ├── server.js           # Main server entry point
+│   │   ├── seedEvents.js       # Database seeding
+│   │   ├── package.json        # Backend dependencies
+│   │   └── .env                # Environment variables (gitignored)
+│   │
+│   └── frontend/               # React Frontend Application
+│       ├── public/             # Static assets (1 file)
+│       ├── src/
+│       │   ├── assets/         # Media assets (1 file)
+│       │   ├── components/     # Reusable components (5 files)
+│       │   ├── context/        # React context (1 file)
+│       │   ├── data/           # Static data (2 files)
+│       │   ├── pages/          # Page components (20 files)
+│       │   ├── services/       # API service layer (12 files)
+│       │   ├── styles/         # CSS stylesheets (2 files)
+│       │   ├── App.jsx         # Main app component
+│       │   └── main.jsx        # Entry point
+│       ├── index.html          # HTML template
+│       ├── vite.config.js      # Vite configuration
+│       ├── eslint.config.js    # ESLint rules
+│       └── package.json        # Frontend dependencies
+
+================================================================================
+4. BACKEND ARCHITECTURE
+================================================================================
+
+SERVER CONFIGURATION (server.js):
+---------------------------------
+- Port: 5000 (default)
+- CORS enabled for frontend (localhost:5173)
+- Rate limiting: 100 requests per 15 minutes per IP
+- Body parser with 10mb limit
+- Passport.js for authentication
+- Global error handling
+
+ROUTES (10 Route Files):
+------------------------
+1. auth.js        - Authentication routes
+2. oauth.js       - OAuth & 2FA routes  
+3. users.js       - User management
+4. posts.js       - Blog post CRUD
+5. articles.js    - Article management
+6. events.js      - Event management
+7. questionnaire.js - Survey/questionnaire
+8. admin.js       - Admin dashboard
+9. seo.js         - SEO (sitemap, robots.txt)
+10. visits.js     - Visit tracking
+
+CONTROLLERS (10 Controller Files):
+----------------------------------
+1. authController.js        - Login, register, password
+2. twoFactorController.js   - 2FA enable/disable/verify
+3. userController.js        - User profile management
+4. postController.js        - Post CRUD operations
+5. articleController.js     - Article operations
+6. eventController.js       - Event operations
+7. questionnaireController.js - Survey management
+8. adminController.js       - Admin operations
+9. seoController.js         - SEO functions
+10. visitController.js      - Analytics tracking
+
+MIDDLEWARE (3 Files):
+---------------------
+- Authentication middleware
+- Authorization/role checking
+- Request validation
+
+================================================================================
+5. FRONTEND ARCHITECTURE
+================================================================================
+
+PAGES (20 Page Components):
+---------------------------
+1. Home.jsx           - Landing page
+2. About.jsx          - About the platform
+3. Auth.jsx           - Login/Register page
+4. AuthCallback.jsx   - OAuth callback handler
+5. Account.jsx        - User account settings
+6. TwoFactorAuth.jsx  - 2FA management
+7. TwoFactorVerify.jsx - 2FA login verification
+8. CompleteProfile.jsx - Profile completion
+9. Blog.jsx           - Blog listing page
+10. Article.jsx       - Single article view
+11. CreatePost.jsx    - Post creation form
+12. Events.jsx        - Events listing
+13. Event.jsx         - Single event view
+14. Economy.jsx       - Economy information page
+15. Entrepreneurs.jsx - Entrepreneurs resources
+16. Resources.jsx     - Resource library
+17. Questionnaire.jsx - Survey page
+18. Contact.jsx       - Contact form
+19. Admin.jsx         - Admin dashboard
+20. Legal.jsx         - Legal/privacy pages
+
+COMPONENTS (5 Shared Components):
+---------------------------------
+1. Header.jsx      - Navigation header
+2. Footer.jsx      - Page footer
+3. Icons.jsx       - Icon components
+4. UI.jsx          - UI elements library
+5. LoadingPage.jsx - Loading spinner
+
+SERVICES (12 API Services):
+---------------------------
+1. api.js                 - Base API configuration
+2. auth.service.js        - Authentication API
+3. oauth.service.js       - OAuth & 2FA API
+4. users.service.js       - User management API
+5. posts.service.js       - Posts API
+6. articles.service.js    - Articles API
+7. events.service.js      - Events API
+8. questionnaire.service.js - Questionnaire API
+9. admin.service.js       - Admin API
+10. contact.service.js    - Contact form API
+11. visit.service.js      - Visit tracking API
+12. index.js              - Service exports
+
+================================================================================
+6. DATABASE MODELS
+================================================================================
+
+11 MONGOOSE MODELS:
+-------------------
+
+1. User.js - User Account Model
+   Fields:
+   - email (String, required, unique)
+   - password (String, hashed, optional for OAuth)
+   - username (String, required, unique)
+   - role (enum: user, superadmin, analyst, moderator)
+   - authProvider (enum: local, google, microsoft)
+   - googleId, microsoftId (OAuth identifiers)
+   - firstName, lastName, profilePicture
+   - twoFactorEnabled, twoFactorSecret, twoFactorBackupCodes
+   - personalInfo (ref: PersonalInfo)
+   - questionnaireCompleted (Boolean)
+   - isActive (Boolean)
+   - timestamps
+
+2. Post.js - Unified Content Model (Articles & Events)
+   Fields:
+   - type (enum: article, event)
+   - title, slug, body
+   - status (enum: draft, published, archived)
+   - author (ref: User)
+   - articleData (embedded: content, summary, readTime, articleType, tags, seo)
+   - eventData (embedded: dates, location, capacity, registeredUsers, etc.)
+   - category (ref: Category)
+   - level (ref: Level)
+   - viewCount, reactions
+   - Virtual fields: comments, isFull, googleCalendarUrl, iCalUrl, isPast
+
+3. Comment.js - Comments on Posts
+
+4. Category.js - Content Categories
+
+5. Level.js - Content Complexity Levels
+
+6. Question.js - Questionnaire Questions
+
+7. Questionnaire.js - Survey Definitions
+
+8. Response.js - Questionnaire Responses
+
+9. PersonalInfo.js - Extended User Profile
+
+10. Resource.js - Resource Library Items
+
+11. Visit.js - Visit/Analytics Tracking
+
+================================================================================
+7. API ENDPOINTS
+================================================================================
+
+AUTHENTICATION:
+---------------
+POST /api/auth/register        - Register new user
+POST /api/auth/login           - Login user
+POST /api/auth/forgot-password - Password reset request
+POST /api/auth/reset-password  - Reset password
+
+OAUTH & 2FA:
+------------
+GET  /api/auth/google          - Initiate Google OAuth
+GET  /api/auth/google/callback - Google OAuth callback
+GET  /api/auth/microsoft       - Initiate Microsoft OAuth
+GET  /api/auth/microsoft/callback - Microsoft OAuth callback
+POST /api/auth/2fa/enable      - Enable 2FA (protected)
+POST /api/auth/2fa/verify-setup - Verify 2FA setup (protected)
+POST /api/auth/2fa/disable     - Disable 2FA (protected)
+POST /api/auth/2fa/verify      - Verify 2FA token (public)
+POST /api/auth/2fa/backup-codes - Generate backup codes (protected)
+POST /api/auth/2fa/use-backup-code - Use backup code (public)
+
+ARTICLES:
+---------
+GET  /api/articles             - Get all articles
+GET  /api/articles/:slug       - Get article by slug
+POST /api/articles             - Create article (protected)
+PUT  /api/articles/:id         - Update article (protected)
+DELETE /api/articles/:id       - Delete article (protected)
+
+EVENTS:
+-------
+GET  /api/events               - Get all events
+GET  /api/events/:slug         - Get event by slug
+POST /api/events               - Create event (protected)
+PUT  /api/events/:id           - Update event (protected)
+DELETE /api/events/:id         - Delete event (protected)
+POST /api/events/:id/register  - Register for event
+GET  /api/events/:id/ical      - Download iCal file
+
+QUESTIONNAIRES:
+---------------
+GET  /api/questionnaires       - Get questionnaires
+POST /api/questionnaires       - Create questionnaire
+POST /api/questionnaires/:id/respond - Submit response
+
+ADMIN:
+------
+GET  /api/admin/dashboard      - View statistics (all admin)
+GET  /api/admin/users          - Get all users (superadmin)
+GET  /api/admin/users/:id      - Get single user (superadmin)
+PUT  /api/admin/users/:id/role - Change user role (superadmin)
+DELETE /api/admin/users/:id    - Delete user (superadmin)
+GET  /api/admin/posts          - Get all posts (moderator+)
+PUT  /api/admin/posts/:id/approve - Approve/reject (moderator+)
+DELETE /api/admin/posts/:id    - Delete any post (moderator+)
+GET  /api/admin/responses      - View responses (analyst+)
+
+CONTACT:
+--------
+POST /api/contact              - Send contact message
+
+SEO:
+----
+GET  /sitemap.xml              - XML Sitemap
+GET  /robots.txt               - Robots.txt
+
+================================================================================
+8. AUTHENTICATION & SECURITY
+================================================================================
+
+AUTHENTICATION METHODS:
+-----------------------
+1. Local Authentication (email/password)
+   - Passwords hashed with bcryptjs (10 salt rounds)
+   - JWT tokens for session management
+   - Protected with 2FA when enabled
+
+2. Google OAuth 2.0
+   - Uses passport-google-oauth20
+   - Automatic account creation for new users
+   - Account linking for existing users by email
+
+3. Microsoft OAuth
+   - Uses passport-microsoft (Azure AD)
+   - Same linking behavior as Google
+
+TWO-FACTOR AUTHENTICATION:
+--------------------------
+- Implementation: TOTP (RFC 6238) with speakeasy
+- QR Code generation with qrcode package
+- 5 backup codes (SHA-256 hashed, one-time use)
+- 30-second token window
+- Compatible apps: Google Authenticator, Microsoft Authenticator, Authy, 1Password
+
+SECURITY MEASURES:
+------------------
+- Helmet.js for HTTP headers security
+- Rate limiting (100 req/15min)
+- CORS with credentials
+- XSS protection
+- MongoDB query sanitization
+- Password fields excluded from queries (select: false)
+- 2FA secrets encrypted and hidden
+
+================================================================================
+9. FEATURES SUMMARY
+================================================================================
+
+USER FEATURES:
+--------------
+✅ User registration and login
+✅ Google & Microsoft OAuth login
+✅ Two-Factor Authentication (TOTP)
+✅ Profile management
+✅ Read articles and blog posts
+✅ View and register for events
+✅ Google Calendar integration for events
+✅ iCal download for events
+✅ Complete questionnaires
+✅ Contact form
+
+CONTENT FEATURES:
+-----------------
+✅ Article/Blog management
+✅ Event management with registration
+✅ Categories and levels for content
+✅ SEO optimization (meta tags, sitemap)
+✅ Comment system
+✅ Reaction system (like, love, celebrate, etc.)
+✅ View counting
+✅ Draft/Published/Archived status
+
+ADMIN FEATURES:
+---------------
+✅ Dashboard with statistics
+✅ User management
+✅ Role management (user, moderator, analyst, superadmin)
+✅ Content moderation
+✅ Questionnaire response viewing
+✅ Post approval workflow
+
+================================================================================
+10. DEPENDENCIES
+================================================================================
+
+BACKEND DEPENDENCIES (package.json):
+------------------------------------
+Production:
+- bcryptjs: ^3.0.3
+- cloudinary: ^2.8.0
+- cors: ^2.8.5
+- dotenv: ^17.2.3
+- express: ^5.1.0
+- express-mongo-sanitize: ^2.2.0
+- express-rate-limit: ^8.2.1
+- express-validator: ^7.3.1
+- helmet: ^8.1.0
+- jsonwebtoken: ^9.0.2
+- mongoose: ^9.0.0
+- multer: ^2.0.2
+- nodemailer: ^7.0.10
+- passport: ^0.7.0
+- passport-google-oauth20: ^2.0.0
+- passport-microsoft: ^2.1.0
+- qrcode: ^1.5.4
+- speakeasy: ^2.0.0
+- xss-clean: ^0.1.4
+
+Dev Dependencies:
+- nodemon: ^3.1.11
+
+FRONTEND DEPENDENCIES (package.json):
+-------------------------------------
+Production:
+- @babel/core: ^7.28.5
+- @lottiefiles/dotlottie-react: ^0.17.9
+- lucide-react: ^0.556.0
+- react: ^19.2.0
+- react-dom: ^19.2.0
+- react-router-dom: ^7.10.1
+
+Dev Dependencies:
+- @eslint/js: ^9.39.1
+- @types/react: ^19.2.5
+- @types/react-dom: ^19.2.3
+- @vitejs/plugin-react: ^5.1.1
+- eslint: ^9.39.1
+- eslint-plugin-react-hooks: ^7.0.1
+- eslint-plugin-react-refresh: ^0.4.24
+- globals: ^16.5.0
+- vite: ^7.2.6
+
+================================================================================
+11. SCRIPTS & COMMANDS
+================================================================================
+
+BACKEND (Backend_blog-main/):
+-----------------------------
+npm start        - Start production server (node server.js)
+npm run dev      - Start development server (nodemon server.js)
+node scripts/seedSuperAdmin.js - Create superadmin user
+node seedEvents.js - Seed events data
+
+FRONTEND (frontend/):
+---------------------
+npm run dev      - Start Vite dev server (http://localhost:5173)
+npm run build    - Build for production
+npm run preview  - Preview production build
+npm run lint     - Run ESLint
+
+ROOT:
+-----
+npm run dev            - Start both frontend and backend
+npm run dev:frontend   - Start only frontend
+npm run dev:backend    - Start only backend
+npm run install:all    - Install all workspace dependencies
+
+================================================================================
+12. ADMIN & USER ROLES
+================================================================================
+
+ROLE HIERARCHY:
+---------------
+1. superadmin
+   - Full system access
+   - User management
+   - Role management
+   - Content moderation
+   - Questionnaire responses
+   - Dashboard statistics
+
+2. analyst
+   - Create/manage questionnaires
+   - View questionnaire responses
+   - Dashboard statistics
+
+3. moderator
+   - Review/approve articles and events
+   - Delete content
+   - Dashboard statistics
+
+4. user (default)
+   - Read content
+   - Register for events
+   - Submit questionnaires
+   - Comment on posts
+   - Manage own profile
+
+SUPERADMIN CREDENTIALS:
+-----------------------
+Email: admin@mahdiabluegreen.com
+Username: superadmin
+Password: (voir SUPERADMIN_PASSWORD dans .env)
+(Note: Change immediately after first login)
+
+================================================================================
+13. CONFIGURATION
+================================================================================
+
+DATABASE:
+---------
+- MongoDB Atlas cluster
+- Database name: mahdia_bluegreen
+- Cluster: bleugreen.lvjvkcr.mongodb.net
+
+ENVIRONMENT VARIABLES (.env):
+-----------------------------
+# MongoDB Connection
+MONGODB_URI=mongodb+srv://...
+
+# JWT
+JWT_SECRET=your_jwt_secret
+
+# Google OAuth
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+GOOGLE_CALLBACK_URL=http://localhost:5000/api/auth/google/callback
+
+# Microsoft OAuth
+MICROSOFT_CLIENT_ID=your_microsoft_client_id
+MICROSOFT_CLIENT_SECRET=your_microsoft_client_secret
+MICROSOFT_CALLBACK_URL=http://localhost:5000/api/auth/microsoft/callback
+
+# Frontend URL
+FRONTEND_URL=http://localhost:5173
+
+# 2FA Configuration
+TWO_FA_ISSUER=Mahdia Blue & Green
+TWO_FA_WINDOW=2
+
+# Cloudinary (for images)
+CLOUDINARY_CLOUD_NAME=...
+CLOUDINARY_API_KEY=...
+CLOUDINARY_API_SECRET=...
+
+# Email (Nodemailer)
+EMAIL_HOST=...
+EMAIL_PORT=...
+EMAIL_USER=...
+EMAIL_PASS=...
+
+SERVER PORTS:
+-------------
+- Backend: 5000
+- Frontend: 5173 (Vite default)
+
+================================================================================
+                              END OF DOCUMENTATION
+================================================================================
+                    Document generated by automated analysis
+                         © 2025 Mahdia Blue & Green
+================================================================================

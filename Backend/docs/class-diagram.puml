@@ -1,0 +1,402 @@
+@startuml Blog_Backend_Class_Diagram
+
+title Blog Backend API - Complete Class Diagram
+
+' ============================================
+' STYLING & LAYOUT
+' ============================================
+skinparam classAttributeIconSize 0
+skinparam class {
+    BackgroundColor White
+    BorderColor Black
+    ArrowColor Black
+}
+skinparam linetype ortho
+
+' ============================================
+' PACKAGE: VISITOR & ACCESS SYSTEM
+' ============================================
+package "Access System" #F5F5F5 {
+    
+    class Visitor <<actor>> {
+        +sessionId: String
+        +ipAddress: String
+        +userAgent: String
+        --
+        **Capabilities:**
+        ✓ Read articles
+        ✓ Read events
+        ✓ View public content
+        ✗ Cannot comment
+        ✗ Cannot create content
+        ✗ Cannot register for events
+    }
+    
+    note bottom of Visitor
+        **Not stored in DB**
+        Represents unauthenticated
+        users with read-only access
+    end note
+}
+
+' ============================================
+' PACKAGE: USER & AUTHENTICATION SYSTEM
+' ============================================
+package "User & Authentication System" #E8F4FD {
+    
+    class User {
+        +_id: ObjectId
+        +email: String {unique}
+        +password: String {hashed}
+        +username: String {unique}
+        +role: Enum ['user', 'superadmin', 'analyst', 'moderator']
+        +personalInfo: ObjectId
+        +questionnaireCompleted: Boolean
+        +isActive: Boolean
+        +createdAt: Date
+        +updatedAt: Date
+        --
+        +comparePassword(candidatePassword): Boolean
+    }
+    
+    class PersonalInfo {
+        +_id: ObjectId
+        +firstName: String
+        +lastName: String
+        +dateOfBirth: Date
+        +gender: Enum ['male', 'female', 'other', 'prefer_not_to_say']
+        +phone: String
+        +address: Address
+        +bio: String
+        +avatar: String
+        +socialLinks: SocialLinks
+        +preferences: Preferences
+        +createdAt: Date
+        +updatedAt: Date
+        --
+        +fullName(): String {virtual}
+    }
+    
+    class Address <<embedded>> {
+        +street: String
+        +city: String
+        +state: String
+        +country: String
+        +zipCode: String
+    }
+    
+    class SocialLinks <<embedded>> {
+        +website: String
+        +twitter: String
+        +linkedin: String
+        +github: String
+    }
+    
+    class Preferences <<embedded>> {
+        +newsletter: Boolean
+        +notifications: Boolean
+    }
+    
+    ' User -> PersonalInfo relationships
+    User "1" *-- "0..1" PersonalInfo : has >
+    PersonalInfo *-- "1" Address : contains >
+    PersonalInfo *-- "1" SocialLinks : contains >
+    PersonalInfo *-- "1" Preferences : contains >
+}
+
+' ============================================
+' PACKAGE: QUESTIONNAIRE SYSTEM
+' ============================================
+package "Questionnaire System" #FFF3E0 {
+    
+    class Questionnaire {
+        +_id: ObjectId
+        +title: String
+        +description: String
+        +questions: ObjectId[]
+        +isActive: Boolean
+        +isDeleted: Boolean
+        +isRegistrationQuestionnaire: Boolean
+        +createdAt: Date
+        +updatedAt: Date
+    }
+    
+    class Question {
+        +_id: ObjectId
+        +text: String
+        +type: Enum ['text', 'multiple_choice', 'single_choice', 'rating', 'boolean', 'date']
+        +options: String[]
+        +order: Number
+        +isRequired: Boolean
+        +category: String
+        +personalInfoField: String
+        +createdAt: Date
+        +updatedAt: Date
+    }
+    
+    class Response {
+        +_id: ObjectId
+        +user: ObjectId
+        +questionnaire: ObjectId
+        +answers: Answer[]
+        +personalInfo: ObjectId
+        +submittedAt: Date
+        +createdAt: Date
+        +updatedAt: Date
+    }
+    
+    class Answer <<embedded>> {
+        +question: ObjectId
+        +value: Mixed
+    }
+    
+    ' Questionnaire internal relationships
+    Questionnaire "1" o-- "1..*" Question : contains >
+    Response *-- "1..*" Answer : contains >
+    Answer "*" }o--|| "1" Question : answers >
+    Response "*" }o--|| "1" Questionnaire : response to >
+}
+
+' ============================================
+' PACKAGE: CONTENT SYSTEM
+' ============================================
+package "Content System" #E8F5E9 {
+    
+    class Post {
+        +_id: ObjectId
+        +type: Enum ['article', 'event']
+        +title: String
+        +slug: String {unique}
+        +body: String
+        +status: Enum ['draft', 'published', 'archived']
+        +author: ObjectId
+        +articleData: ArticleData
+        +eventData: EventData
+        +category: ObjectId
+        +level: ObjectId
+        +viewCount: Number
+        +isDeleted: Boolean
+        +publishedAt: Date
+        +createdAt: Date
+        +updatedAt: Date
+        --
+        +comments(): Comment[] {virtual}
+    }
+    
+    class ArticleData <<embedded>> {
+        +content: String
+        +summary: String
+        +readTime: Number
+        +tags: String[]
+        +featuredImage: String
+        +seo: SEO
+    }
+    
+    class SEO <<embedded>> {
+        +metaTitle: String
+        +metaDescription: String
+        +keywords: String[]
+    }
+    
+    class EventData <<embedded>> {
+        +startDate: Date
+        +endDate: Date
+        +location: String
+        +venue: String
+        +isOnline: Boolean
+        +meetingLink: String
+        +capacity: Number
+        +registeredUsers: ObjectId[]
+        +eventImage: String
+    }
+    
+    class Comment {
+        +_id: ObjectId
+        +content: String
+        +rating: Number [1-5]
+        +post: ObjectId
+        +author: ObjectId
+        +isApproved: Boolean
+        +createdAt: Date
+        +updatedAt: Date
+    }
+    
+    ' Post internal relationships (embedded)
+    Post *-- "0..1" ArticleData : contains (if type=article) >
+    Post *-- "0..1" EventData : contains (if type=event) >
+    ArticleData *-- "0..1" SEO : contains >
+    Comment "*" }o--|| "1" Post : belongs to >
+}
+
+' ============================================
+' PACKAGE: CLASSIFICATION SYSTEM
+' ============================================
+package "Classification System" #F3E5F5 {
+    
+    class Category {
+        +_id: ObjectId
+        +title: String {unique}
+        +description: String
+        +parentId: ObjectId
+        +isActive: Boolean
+        +createdAt: Date
+        +updatedAt: Date
+        --
+        +subcategories(): Category[] {virtual}
+    }
+    
+    class Level {
+        +_id: ObjectId
+        +level: Number {unique}
+        +name: String
+        +description: String
+        +createdAt: Date
+        +updatedAt: Date
+    }
+    
+    ' Category self-reference
+    Category "*" }o--o| "0..1" Category : parent >
+}
+
+' ============================================
+' PACKAGE: RESOURCE SYSTEM
+' ============================================
+package "Resource System" #FFEBEE {
+    
+    class Resource {
+        +_id: ObjectId
+        +title: String
+        +type: Enum ['document', 'video', 'link', 'image', 'file']
+        +url: String
+        +description: String
+        +category: ObjectId
+        +uploadedBy: ObjectId
+        +isPublic: Boolean
+        +createdAt: Date
+        +updatedAt: Date
+    }
+}
+
+' ============================================
+' CROSS-PACKAGE RELATIONSHIPS
+' ============================================
+
+' Visitor -> User (registration flow)
+Visitor ..> User : registers & becomes >
+
+' User <-> Questionnaire System
+Response "*" }o--|| "1" User : submitted by >
+Response "1" ..> "0..1" PersonalInfo : populates (registration) >
+
+' User <-> Content System
+Post "*" }o--|| "1" User : author >
+Comment "*" }o--|| "1" User : author >
+Post "*" }o--o{ "*" User : eventData.registeredUsers >
+
+' Content <-> Classification
+Post "*" }o--o| "0..1" Category : belongs to >
+Post "*" }o--o| "0..1" Level : has >
+
+' Resource <-> Other
+Resource "*" }o--o| "0..1" Category : belongs to >
+Resource "*" }o--o| "0..1" User : uploadedBy >
+
+' Visitor reads content
+Visitor ..> Post : reads (public) >
+
+' ============================================
+' NOTES
+' ============================================
+
+note top of User
+    **User Roles & Permissions**
+    ━━━━━━━━━━━━━━━━━━━━━━━
+    
+    **user** (default)
+    • Create own articles/events
+    • Register for events
+    • Comment on posts
+    
+    **superadmin** (full access)
+    • All permissions
+    • User management
+    • Role assignment
+    • Delete any content
+    
+    **analyst** (questionnaire admin)
+    • Create/edit questionnaires
+    • View all responses
+    • Analyze user data
+    
+    **moderator** (content supervisor)
+    • Review all posts
+    • Approve/reject content
+    • Delete inappropriate posts
+end note
+
+note bottom of Post
+    **Single Collection Design**
+    ━━━━━━━━━━━━━━━━━━━━━━━
+    type='article' → articleData filled
+    type='event' → eventData filled
+    (mutually exclusive, embedded)
+    
+    Benefits:
+    • One ID per content
+    • Single query
+    • Atomic operations
+    • No orphan data
+end note
+
+note right of Response
+    **Registration Flow**
+    ━━━━━━━━━━━━━━━━━━━
+    1. Visitor registers
+    2. Gets temp token
+    3. Completes questionnaire
+    4. Response created
+    5. PersonalInfo extracted
+    6. Becomes full User
+end note
+
+note bottom of Question
+    **personalInfoField**
+    ━━━━━━━━━━━━━━━━━━━
+    Maps answer to PersonalInfo:
+    'firstName', 'lastName',
+    'address.city', 'address.street',
+    'preferences.newsletter', etc.
+end note
+
+note right of Category
+    **Hierarchical**
+    ━━━━━━━━━━━━━━
+    Categories can have
+    parent categories
+    for nested structure
+end note
+
+' ============================================
+' LEGEND
+' ============================================
+
+legend right
+    **Relationship Types**
+    |= Symbol |= Meaning |
+    | *-- | Composition (owns lifecycle) |
+    | o-- | Aggregation (has reference) |
+    | }o--|| | Many to One (required) |
+    | }o--o| | Many to One (optional) |
+    | }o--o{ | Many to Many |
+    | ..> | Creates/Populates/Becomes |
+    
+    **Stereotypes**
+    |= Symbol |= Meaning |
+    | <<actor>> | External actor (not in DB) |
+    | <<embedded>> | Embedded subdocument |
+    | {virtual} | Computed field |
+    | {unique} | Unique constraint |
+    | {hashed} | Encrypted/hashed value |
+endlegend
+
+@enduml

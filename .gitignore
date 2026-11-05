@@ -1,0 +1,23 @@
+# Dependencies (installées avec npm install, jamais versionnées)
+node_modules/
+
+# Secrets : ne jamais commiter les vraies valeurs
+.env
+.env.*
+!.env.example
+
+# Build généré (régénéré avec npm run build)
+Frontend/dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Système / éditeur
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Identifiants superadmin (ne jamais versionner)
+documentation/SUPERADMIN_CREDENTIALS.md

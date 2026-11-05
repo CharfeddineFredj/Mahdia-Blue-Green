@@ -1,0 +1,593 @@
+Cahier des Charges - Blog "Mahdia Blue and Green"
+1. PRÉSENTATION DU PROJET
+1.1 Contexte et Vision
+Mahdia Blue and Green est une initiative stratégique visant à positionner Mahdia comme hub régional des économies bleue, verte et circulaire. Le projet s'inscrit dans une démarche de développement durable et d'entrepreneuriat local, avec un objectif ambitieux : accompagner 50 porteurs de projets pour créer 10 entreprises viables.
+Budget alloué : 7 810 DT HT
+Porteur du projet : OIT Mahdia
+Public cible : Entrepreneurs, étudiants, acteurs locaux de l'économie durable
+1.2 Objectifs Stratégiques du Blog
+Objectifs Marketing
+•	Générer 5 000+ visiteurs uniques dans les 6 premiers mois
+•	Atteindre un taux d'engagement de 15% (commentaires, partages, inscriptions)
+•	Convertir 10% des visiteurs en participants aux ateliers
+•	Positionner le site dans le top 3 Google pour les requêtes locales clés
+Objectifs Communication
+•	Créer une vitrine digitale professionnelle et inspirante
+•	Diffuser du contenu éducatif sur les économies durables
+•	Valoriser les success stories locales et internationales
+•	Faciliter la mise en réseau des acteurs de l'écosystème
+Objectifs Techniques
+•	Assurer un temps de chargement < 2 secondes
+•	Garantir une accessibilité WCAG 2.1 AA
+•	Atteindre un score Google PageSpeed > 90/100
+•	Optimiser pour le SEO local et mobile-first
+
+ 
+2. ARCHITECTURE ET STRUCTURE DU SITE
+2.1 Arborescence Optimisée SEO
+Accueil (/)
+│
+├── À Propos (/a-propos)
+│   ├── Le Projet
+│   ├── Notre Mission
+│   └── L'Équipe OIT Mahdia
+│
+├── Économie Bleue (/economie-bleue)
+│   ├── Articles
+│   ├── Success Stories
+│   └── Ressources
+│
+├── Économie Verte (/economie-verte)
+│   ├── Articles
+│   ├── Initiatives Locales
+│   └── Guides Pratiques
+│
+├── Économie Circulaire (/economie-circulaire)
+│   ├── Articles
+│   ├── Études de Cas
+│   └── Outils
+│
+├── Événements (/evenements)
+│   ├── Calendrier
+│   ├── Ateliers à Venir
+│   └── Archives
+│
+├── Entrepreneurs (/entrepreneurs)
+│   ├── Témoignages
+│   ├── Accompagnement
+│   └── Ressources Téléchargeables
+│
+├── Actualités (/actualites)
+│
+├── Contact (/contact)
+│   └── Formulaire d'inscription
+│
+└── Ressources (/ressources)
+    ├── Guides PDF
+    ├── Infographies
+    └── Vidéos
+2.2 Pages Prioritaires (MVP)
+Page d'Accueil
+Éléments clés :
+•	Hero section avec CTA principal "Rejoindre le Mouvement"
+•	Bloc "Derniers Articles" (4-6 articles)
+•	Section "Événements à Venir" (3 prochains événements)
+•	Compteur dynamique "X entrepreneurs accompagnés"
+•	Témoignages en slider
+•	Newsletter signup
+•	Section partenaires
+SEO :
+•	Title : "Mahdia Blue and Green | Économie Durable & Entrepreneuriat à Mahdia"
+•	Meta description : 150-160 caractères incluant mots-clés locaux
+•	Schema markup : Organization, LocalBusiness
+Page Blog/Articles
+Fonctionnalités :
+•	Système de filtres par catégorie et tags
+•	Pagination SEO-friendly (10 articles/page)
+•	Sidebar avec : 
+o	Articles populaires
+o	Catégories
+o	Tags cloud
+o	Newsletter
+•	Social sharing buttons
+•	Temps de lecture estimé
+•	Auteur et date
+Structure article type :
+•	Title H1 optimisé (60 caractères max)
+•	Featured image (1200x630px, optimisée)
+•	Breadcrumb
+•	Table des matières automatique
+•	Images avec alt text descriptif
+•	CTA en fin d'article
+•	Articles similaires
+•	Section commentaires
+Page Événements
+Fonctionnalités avancées :
+•	Calendrier interactif filtrable
+•	Inscription en ligne intégrée
+•	Rappels automatiques (si plugin email configuré)
+•	Export Google Calendar/iCal
+•	Partage événement sur réseaux sociaux
+•	Schema markup : Event
+Page Contact
+Éléments :
+•	Formulaire multi-étapes optimisé : 
+1.	Type de profil (entrepreneur, étudiant, institution)
+2.	Domaine d'intérêt
+3.	Coordonnées
+4.	Message
+•	Protection anti-spam (reCAPTCHA v3)
+•	Confirmation par email
+•	Temps de réponse affiché
+•	Carte interactive (Google Maps)
+•	Coordonnées claires
+3. SPÉCIFICATIONS TECHNIQUES
+3.1 Stack Technologique Recommandée
+CMS : WordPress 6.4+
+•	Justification : Gratuit, extensible, SEO-friendly, large communauté
+Thème : Développement sur-mesure ou thème premium adapté
+•	Recommandation : GeneratePress Premium ou Kadence (légères, SEO-optimisées)
+•	Alternative : Thème custom basé sur Underscores
+Plugins Essentiels :
+SEO & Performance :
+•	Rank Math SEO ou Yoast SEO Premium
+•	WP Rocket (cache et optimisation)
+•	ShortPixel (compression images)
+•	WP-Optimize (nettoyage BDD)
+Fonctionnalités :
+•	Advanced Custom Fields PRO (champs personnalisés)
+•	WPForms ou Contact Form 7 (formulaires)
+•	The Events Calendar (événements)
+•	MailPoet ou Newsletter (emailing)
+ 
+Sécurité :
+•	Wordfence Security
+•	UpdraftPlus (backups)
+Multimédia :
+•	Smush ou Imagify (optimisation images)
+•	WP Video Lightbox (vidéos)
+3.2 Hébergement et Infrastructure
+Recommandations Tunisie :
+1.	OVH France (datacenter proche, support français)
+2.	PlanetHoster (hébergement vert, support francophone)
+3.	Alternative locale : TopNet Business ou GlobalNet
+Spécifications minimales :
+•	PHP 8.0+
+•	MySQL 5.7+ ou MariaDB 10.3+
+•	SSL/TLS (Let's Encrypt gratuit)
+•	Minimum 2 Go RAM
+•	SSD storage
+•	CDN recommandé (Cloudflare gratuit)
+3.3 Performance et Optimisation
+Objectifs mesurables :
+•	Google PageSpeed Desktop : > 90/100
+•	Google PageSpeed Mobile : > 85/100
+•	Temps de chargement : < 2 secondes (3G)
+•	Core Web Vitals : tous au vert
+•	GTmetrix Grade : A
+Techniques d'optimisation :
+•	Lazy loading images et vidéos
+•	Minification CSS/JS
+•	Compression GZIP/Brotli
+•	Cache navigateur (1 an pour assets statiques)
+•	Critical CSS inline
+•	Defer/Async JavaScript
+•	Sprites CSS pour icônes
+•	WebP pour images (avec fallback)
+•	Font display: swap pour polices
+4. STRATÉGIE SEO ET CONTENU
+4.1 Recherche de Mots-Clés
+Mots-clés principaux (à valider avec recherche) :
+•	"économie bleue Mahdia"
+•	"entrepreneuriat durable Tunisie"
+•	"économie verte Mahdia"
+•	"économie circulaire Tunisie"
+•	"accompagnement entrepreneur Mahdia"
+Mots-clés longue traîne :
+•	"comment créer entreprise durable Mahdia"
+•	"formation entrepreneuriat vert Tunisie"
+•	"pêche durable Mahdia techniques"
+4.2 Stratégie de Contenu
+Calendrier éditorial (suggestion 6 premiers mois) :
+Mois 1-2 : Fondation
+•	8 articles piliers (2000+ mots chacun)
+•	4 guides téléchargeables PDF
+•	10 fiches pratiques courtes
+Mois 3-4 : Expansion
+•	12 articles réguliers (800-1500 mots)
+•	6 interviews entrepreneurs
+•	8 actualités courtes
+Mois 5-6 : Consolidation
+•	8 études de cas détaillées
+•	4 infographies
+•	Série vidéo (si budget)
+Types de contenu prioritaires :
+1.	Guides pratiques ("Comment lancer une entreprise d'aquaculture durable")
+2.	Success stories (entrepreneurs locaux)
+3.	Actualités sectorielles
+4.	Ressources téléchargeables
+5.	FAQ thématiques
+4.3 Optimisation On-Page
+Checklist article :
+•	[ ] Title SEO optimisé (60 caractères, mot-clé au début)
+•	[ ] Meta description unique (150-160 caractères)
+•	[ ] URL courte et descriptive
+•	[ ] Mot-clé principal dans H1
+•	[ ] Structure Hn logique (H1 > H2 > H3)
+•	[ ] Mot-clé dans les 100 premiers mots
+•	[ ] Images optimisées (poids < 200 Ko, alt text)
+•	[ ] Liens internes (3-5 par article)
+•	[ ] Liens externes vers sources autoritaires
+•	[ ] CTA clair et visible
+•	[ ] Schema markup (Article)
+4.4 Stratégie de Netlinking
+Actions prioritaires :
+1.	Inscription annuaires locaux (Google Business Profile)
+2.	Partenariats avec médias locaux (articles invités)
+3.	Collaboration avec institutions (OIT, universités)
+4.	Participation forums entrepreneuriat Tunisie
+5.	Réseaux sociaux actifs (backlinks indirects)
+5. CHARTE GRAPHIQUE ET IDENTITÉ VISUELLE
+5.1 Palette de Couleurs (Validée)
+Couleur	Code Hex	Usage
+Bleu Marin	#0077B6	Titres, liens, éléments marins
+Vert Feuillage	#2A9D8F	Accents nature, sous-titres
+Orange Circulaire	#E76F51	CTA, boutons, hover
+Blanc Pur	#FFFFFF	Fond principal, cartes
+Gris Clair	#E9ECEF	Backgrounds secondaires
+Gris Foncé	#264653	Texte principal, contours
+Gradients :
+•	Principal : linear-gradient(135deg, #0077B6 0%, #2A9D8F 100%)
+•	Hover CTA : linear-gradient(135deg, #E76F51 0%, #F4A261 100%)
+
+
+5.2 Typographie
+Hiérarchie :
+•	H1 : Montserrat Bold, 36-48px (desktop), 28-32px (mobile), couleur #0077B6
+•	H2 : Montserrat Bold, 28-32px (desktop), 24-28px (mobile), couleur #2A9D8F
+•	H3 : Montserrat SemiBold, 22-24px (desktop), 20-22px (mobile), couleur #264653
+•	Body : Open Sans Regular, 16px (1.6 line-height), couleur #264653
+•	Slogan/Citation : Raleway Italic, 18-20px, couleur #0077B6
+Chargement optimisé :
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&family=Raleway:ital@1&display=swap');
+5.3 Logo - Spécifications Techniques
+Concept validé :
+•	Cercle englobant (économie circulaire)
+•	Vague bleue fluide (économie bleue)
+•	Feuille verte émergeante (économie verte)
+•	Spirale orange centrale (dynamisme)
+•	Texte "Mahdia Blue and Green" en Montserrat Bold
+•	Mention "OIT Mahdia" en Open Sans Regular (plus petit)
+Formats requis :
+•	SVG vectoriel (usage principal)
+•	PNG transparent : 512x512px, 256x256px, 128x128px
+•	Favicon : 32x32px, 16x16px
+•	Version monochrome (pour impressions)
+Variations :
+•	Logo horizontal (header)
+•	Logo vertical (footer)
+•	Logo icon seul (favicon, réseaux sociaux)
+5.4 Composants UI
+Boutons :
+Primaire (CTA) :
+- Background : #E76F51
+- Hover : #F4A261
+- Text : #FFFFFF
+- Border-radius : 8px
+- Padding : 12px 32px
+- Font : Montserrat SemiBold 16px
+
+Secondaire :
+- Background : transparent
+- Border : 2px solid #0077B6
+- Text : #0077B6
+- Hover : Background #0077B6, Text #FFFFFF
+Cards (articles) :
+•	Background : #FFFFFF
+•	Border : 1px solid #E9ECEF
+•	Border-radius : 12px
+•	Shadow : 0 4px 12px rgba(38, 70, 83, 0.08)
+•	Hover : Shadow 0 8px 24px rgba(38, 70, 83, 0.12)
+
+6. ACCESSIBILITÉ ET UX
+6.1 Standards WCAG 2.1 AA
+Contrastes validés :
+•	Texte principal (#264653) sur fond blanc : ratio 10.8:1 ✓
+•	Liens bleus (#0077B6) sur fond blanc : ratio 4.95:1 ✓
+•	CTA orange (#E76F51) sur fond blanc : ratio 4.52:1 ✓
+Fonctionnalités obligatoires :
+•	[ ] Navigation clavier complète (Tab, Enter, Espace)
+•	[ ] Skip links ("Aller au contenu principal")
+•	[ ] Alt text descriptif pour toutes images
+•	[ ] Étiquettes ARIA pour éléments interactifs
+•	[ ] Vidéos avec sous-titres
+•	[ ] Formulaires avec labels visibles
+•	[ ] Focus visible sur éléments interactifs
+•	[ ] Pas de déclenchement automatique audio/vidéo
+6.2 Responsive Design
+Breakpoints :
+•	Mobile : < 768px
+•	Tablet : 768px - 1024px
+•	Desktop : > 1024px
+•	Large desktop : > 1440px
+Optimisations mobile :
+•	Menu hamburger fluide
+•	Formulaires simplifiés (1 champ/ligne)
+•	Boutons taille minimale 44x44px (touch target)
+•	Images responsive (srcset)
+•	Polices réduites proportionnellement
+
+7. MARKETING DIGITAL ET CONVERSION
+7.1 Stratégie d'Acquisition
+Canaux prioritaires :
+1.	SEO organique (70% trafic cible)
+2.	Réseaux sociaux (20% - Facebook, LinkedIn, Instagram)
+3.	Email marketing (5% - newsletter)
+4.	Partenariats (5% - sites partenaires)
+Actions concrètes :
+•	Publication 2-3 articles/semaine (phase lancement)
+•	Posts réseaux sociaux quotidiens
+•	Newsletter bimensuelle
+•	Collaborations avec 5 influenceurs locaux
+•	Présence événements locaux (QR code vers site)
+7.2 Tunnels de Conversion
+Tunnel principal :
+1.	Visiteur arrive sur article blog (SEO/social)
+2.	Lecture contenu de qualité + CTA contextuel
+3.	Inscription newsletter ou événement (lead magnet : guide PDF)
+4.	Nurturing emails personnalisés
+5.	Conversion participation atelier
+6.	Fidélisation success story + ambassadeur
+Points de conversion :
+•	Formulaire inscription atelier (objectif : 50 inscriptions)
+•	Téléchargement ressources (objectif : 500 téléchargements/6 mois)
+•	Inscription newsletter (objectif : 1000 abonnés/an)
+•	Partages sociaux (objectif : 20 partages/article)
+7.3 Analytics et KPIs
+Outils requis :
+•	Google Analytics 4 (GA4)
+•	Google Search Console
+•	Facebook Pixel (si budget ads futur)
+•	Hotjar ou Microsoft Clarity (heatmaps gratuit)
+KPIs principaux :
+•	Sessions mensuelles
+•	Taux de rebond (< 60%)
+•	Durée session moyenne (> 2 min)
+•	Pages/session (> 2.5)
+•	Taux de conversion formulaires (> 10%)
+•	Classement mots-clés (top 10)
+•	Backlinks acquis
+•	Abonnés newsletter
+Reporting : Dashboard mensuel avec tendances et recommandations
+8. SÉCURITÉ ET CONFORMITÉ
+8.1 Sécurité Technique
+Mesures obligatoires :
+•	Certificat SSL/TLS (HTTPS)
+•	Mises à jour WordPress automatiques (core, thèmes, plugins)
+•	Firewall applicatif (Wordfence)
+•	Limitation tentatives connexion
+•	Authentification forte admin (2FA recommandé)
+•	Backups quotidiens automatiques (rétention 30 jours)
+•	Scan malware hebdomadaire
+•	Désactivation XML-RPC (si non utilisé)
+•	Protection CSRF formulaires
+•	reCAPTCHA v3 sur formulaires
+8.2 RGPD et Confidentialité
+Conformité :
+•	[ ] Politique de confidentialité détaillée
+•	[ ] Mentions légales complètes
+•	[ ] Cookie banner (consentement)
+•	[ ] Formulaire RGPD-compliant (case à cocher explicite)
+•	[ ] Droit d'accès/suppression données
+•	[ ] Stockage sécurisé données utilisateurs
+•	[ ] Pas de tracking sans consentement
+9. PLANNING ET MÉTHODOLOGIE
+9.1 Planning Détaillé (8 semaines)
+Semaine 1-2 : Conception et Préparation
+•	Validation cahier des charges
+•	Audit concurrence locale
+•	Recherche mots-clés approfondie
+•	Wireframes pages principales (Figma)
+•	Maquettes graphiques (5 pages)
+•	Choix hébergement et installation WordPress
+•	Livrable : Maquettes validées
+Semaine 3-4 : Développement Phase 1
+•	Configuration WordPress + thème de base
+•	Installation et configuration plugins
+•	Intégration charte graphique
+•	Développement pages statiques (Accueil, À Propos, Contact)
+•	Configuration formulaires
+•	Livrable : Pages statiques fonctionnelles
+Semaine 5-6 : Développement Phase 2
+•	Développement section blog/articles
+•	Configuration catégories et taxonomies
+•	Intégration calendrier événements
+•	Création 10 articles de contenu
+•	Optimisation SEO on-page
+•	Configuration newsletter
+•	Livrable : Site complet fonctionnel
+Semaine 7 : Tests et Optimisation
+•	Tests multi-navigateurs (Chrome, Firefox, Safari, Edge)
+•	Tests responsive (mobile, tablette)
+•	Tests performance (PageSpeed, GTmetrix)
+•	Tests accessibilité (WAVE, axe)
+•	Corrections bugs
+•	Optimisation finale
+•	Livrable : Site testé et optimisé
+
+Semaine 8 : Lancement et Formation
+•	Migration vers hébergement production
+•	Configuration DNS et SSL
+•	Formation équipe (3h minimum)
+•	Documentation remise
+•	Accompagnement post-lancement (1 mois)
+•	Livrable : Site en ligne + documentation
+9.2 Méthodologie Agile
+Sprints hebdomadaires avec :
+•	Réunion planning lundi (1h)
+•	Point quotidien asynchrone (Slack/email)
+•	Démo vendredi (30 min)
+•	Rétrospective vendredi (30 min)
+Outils collaboration :
+•	Gestion projet : Trello ou Notion
+•	Versioning : Git + GitHub/GitLab
+•	Communication : Slack ou WhatsApp
+•	Design : Figma (partage maquettes)
+10. LIVRABLES ET CRITÈRES D'ACCEPTATION
+10.1 Livrables Finaux
+Techniques :
+•	[ ] Site WordPress fonctionnel
+•	[ ] Code source commenté (repository Git)
+•	[ ] Thème personnalisé (child theme)
+•	[ ] Base de données avec contenu démo
+•	[ ] Fichiers d'export/import
+•	[ ] Credentials admin sécurisés
+Documentation :
+•	[ ] Guide administrateur (PDF 15-20 pages) 
+o	Ajout/modification articles
+o	Gestion événements
+o	Modération commentaires
+o	Mise à jour contenu
+•	[ ] Documentation technique (développeurs) 
+o	Architecture code
+o	Plugins utilisés et configurations
+o	Procédure backup/restore
+o	Troubleshooting commun
+•	[ ] Guide SEO (actions mensuelles)
+•	[ ] Calendrier éditorial 3 mois
+Formation :
+•	[ ] Session formation 3h (enregistrée)
+•	[ ] Support post-formation 1 mois
+•	[ ] Vidéos tutoriels courts (5-10 min chacune)
+10.2 Critères d'Acceptation
+Fonctionnels :
+•	✓ Toutes pages accessibles et responsive
+•	✓ Formulaires fonctionnels avec confirmations
+•	✓ Publication articles opérationnelle
+•	✓ Recherche et filtres fonctionnent
+•	✓ Calendrier événements synchronisé
+•	✓ Newsletter configurable
+•	✓ 0 bug bloquant, maximum 3 bugs mineurs
+Performance :
+•	✓ PageSpeed Mobile > 80/100
+•	✓ PageSpeed Desktop > 90/100
+•	✓ Temps chargement < 3 secondes (3G)
+•	✓ Toutes images optimisées (< 200 Ko)
+SEO :
+•	✓ Indexation Google réussie (Search Console)
+•	✓ Sitemap XML généré et soumis
+•	✓ Robots.txt correct
+•	✓ Balises meta complètes (toutes pages)
+•	✓ Schema markup implémenté
+•	✓ 0 erreur W3C validator
+Design :
+•	✓ Conformité charte graphique 100%
+•	✓ Contrastes WCAG AA validés
+•	✓ Navigation intuitive (tests utilisateurs)
+•	✓ Cohérence visuelle toutes pages
+Sécurité :
+•	✓ SSL actif
+•	✓ Plugins sécurité configurés
+•	✓ Backups automatiques actifs
+•	✓ Scan vulnérabilités propre
+10.3 Tests d'Acceptation Utilisateur (UAT)
+Scénarios à valider :
+1.	Lecture article et partage social
+2.	Recherche contenu par mot-clé
+3.	Inscription événement via formulaire
+4.	Téléchargement ressource PDF
+5.	Inscription newsletter
+6.	Navigation mobile complète
+7.	Ajout commentaire (si activé)
+8.	Admin : publication nouvel article
+9.	Admin : création événement
+10.	Admin : modération commentaire
+11. BUDGET ET RESSOURCES
+11.1 Estimation Budget Technique
+Poste	Coût Estimé	Notes
+Hébergement annuel	400-800 DT	OVH ou similaire
+Nom de domaine .tn	50-80 DT/an	ATI Tunisie
+Thème premium (optionnel)	200-400 DT	Si pas custom
+Plugins premium	300-600 DT	ACF Pro, WP Rocket, etc.
+Stock images	0-200 DT	Unsplash gratuit ou Envato
+Logo professionnel	Inclus	À créer par étudiants
+SSL	Gratuit	Let's Encrypt
+TOTAL	950-2080 DT	Première année
+Budget projet global (7810 DT) couvre largement ces coûts techniques
+11.2 Équipe Projet Suggérée
+Côté Client (OIT Mahdia) :
+•	Chef de projet (validation)
+•	Responsable contenu (rédaction)
+•	Community manager (animation)
+Côté Étudiants ISIM :
+•	Lead développeur (1)
+•	Développeur front-end (1-2)
+•	Designer UI/UX (1)
+•	Rédacteur SEO (1)
+•	Testeur QA (1)
+12. MAINTENANCE ET ÉVOLUTION
+12.1 Maintenance Préventive (Post-Lancement)
+Mensuelle :
+•	Mises à jour WordPress/plugins/thème
+•	Vérification backups
+•	Scan sécurité
+•	Monitoring uptime
+•	Rapport analytics
+Trimestrielle :
+•	Audit SEO
+•	Optimisation performance
+•	Nettoyage base de données
+•	Revue contenu obsolète
+12.2 Évolutions Futures Recommandées
+Phase 2 (Mois 6-12) :
+•	Espace membre entrepreneurs
+•	Forum communautaire
+•	Système de notation/avis
+•	Multilingue (arabe/anglais)
+•	Application mobile PWA
+Phase 3 (Année 2) :
+•	Marketplace services/produits durables
+•	Module e-learning
+•	Système de mentorat en ligne
+•	API pour partenaires
+
+
+13. ANNEXES
+13.1 Ressources Utiles
+Documentation :
+•	WordPress Codex : https://codex.wordpress.org
+•	WCAG Guidelines : https://www.w3.org/WAI/WCAG21/quickref/
+•	Google SEO Starter Guide : https://developers.google.com/search/docs
+Outils Recommandés :
+•	Design : Figma, Adobe XD
+•	Images : Unsplash, Pexels, Pixabay
+•	Optimisation : TinyPNG, Squoosh
+•	Testing : BrowserStack, LambdaTest
+•	SEO : SEMrush, Ubersuggest, AnswerThePublic
+13.2 Glossaire
+•	CTA : Call-To-Action (appel à l'action)
+•	WCAG : Web Content Accessibility Guidelines
+•	Core Web Vitals : LCP, FID, CLS (métriques Google)
+•	Schema Markup : Données structurées pour moteurs recherche
+•	Above the fold : Contenu visible sans scroll
+13.3 Contacts Projet
+Porteur de projet :
+•	Hafedh Boukthir : 93 381 018
+•	Mohamed Sfar : +216 20 508 997
+Support Technique :
+•	Email : [À compléter]
+•	Heures support : [À définir]
+14. VALIDATION ET SIGNATURES
+Rôle	Nom	Signature	Date
+Chef de projet OIT			
+Responsable ISIM			
+Lead développeur			
+Date de validation cahier des charges : //______
+Date de lancement projet : //______
+Date de livraison prévue : //______
+
+Ce cahier des charges est un document évolutif. Toute modification doit faire l'objet d'un avenant signé par les deux parties.
+Version : 2.0
+Date : Octobre 2025
+Statut : En validation
+
